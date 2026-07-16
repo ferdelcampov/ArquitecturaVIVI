@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viviana | Portafolio de Arquitectura</title>
+    <meta
+      name="description"
+      content="Portafolio de arquitectura con proyectos de diseño residencial, comercial e interiorismo."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <a class="brand" href="#">Viviana Gordillo Valle</a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="eyebrow">Architecture Portfolio</p>
+        <h1>Designing spaces that convey identity and balance.</h1>
+        <p>
+          A selection of residential, commercial and interior projects focused on light, materiality and user experience.
+        </p>
+        <a class="btn" href="#projects">Explore projects</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section intro" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Architecture designed to live, work and feel.</h2>
+        </div>
+        <div class="intro-grid">
+          <p>
+            I am an architectural designer focused on creating spaces with character, functionality and a clear visual narrative. I translate client needs into coherent and memorable spatial solutions.
+          </p>
+          <p>
+            Each project considers the relationship between form, context and emotion, seeking a balance between proportion, detail and wellbeing.
+          </p>
+        </div>
+      </section>
+
+      <section class="section projects" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Featured projects</p>
+          <h2>A collection of realized ideas.</h2>
+        </div>
+
+        <div class="filters" aria-label="Filter projects">
+          <button class="filter-btn active" data-filter="todos">All</button>
+          <button class="filter-btn" data-filter="residencial">Residential</button>
+          <button class="filter-btn" data-filter="comercial">Commercial</button>
+          <button class="filter-btn" data-filter="interiorismo">Interior design</button>
+        </div>
+
+        <div class="project-grid">
+          <a class="project-card" data-category="residencial" href="courtyard-house.html">
+            <div class="project-image image-courtyard">
+              <img src="assets/courtyard-house/ELEVATION.png" alt="Elevación de Courtyard House" loading="lazy" />
+            </div>
+            <div class="project-info">
+              <h3>Courtyard House</h3>
+              <p>Description.</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="residencial" href="mid-rise.html">
+            <div class="project-image image-courtyard">
+              <img src="assets/mid-rise/FRONT ELEVATION-web.png" alt="Front elevation — Mid-rise Apartment Building" loading="lazy" />
+            </div>
+            <div class="project-info">
+              <h3>Mid-rise Apartment Building</h3>
+              <p>Mixed-use mid-rise with shared terraces and active ground floor retail.</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="interiorismo" href="fish-market.html">
+            <div class="project-image image-3"></div>
+            <div class="project-info">
+              <h3>Fish Market</h3>
+              <p>Interiorismo contemporáneo que mezcla calidez, textura y volumen.</p>
+            </div>
+          </a>
+
+          <article class="project-card" data-category="residencial">
+            <div class="project-image image-4"></div>
+            <div class="project-info">
+              <h3>Meditation Space</h3>
+              <p>Proyecto enfocado en la funcionalidad diaria y la comodidad de la familia.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section values">
+        <div class="section-heading">
+          <p class="eyebrow">Approach</p>
+          <h2>Details that make the difference.</h2>
+        </div>
+        <div class="value-grid">
+          <div>
+            <h3>Functionality</h3>
+            <p>Practical, comfortable spaces for everyday life.</p>
+          </div>
+          <div>
+            <h3>Materiality</h3>
+            <p>Selection of textures and finishes that add character.</p>
+          </div>
+          <div>
+            <h3>Lighting</h3>
+            <p>Strategic use of light to create warm and dynamic atmospheres.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="section contact" id="contact">
+      <div class="section-heading">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's talk about your next project.</h2>
+      </div>
+      <p>
+        If you'd like to collaborate or see more work, email
+        <a href="mailto:tuemail@dominio.com">tuemail@dominio.com</a>.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <p>© 2026 Viviana. Architecture portfolio.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
