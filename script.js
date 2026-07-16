@@ -8,7 +8,7 @@ filterButtons.forEach((button) => {
     filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
 
     projects.forEach((project) => {
-      const matches = filter === 'todos' || project.dataset.category === filter;
+      const matches = filter === 'all' || project.dataset.category === filter;
       project.classList.toggle('hidden', !matches);
     });
   });
