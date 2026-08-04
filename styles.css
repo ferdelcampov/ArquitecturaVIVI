@@ -1348,3 +1348,55 @@ ul {
     line-height: 1;
   }
 }
+
+/* =====================================================
+   FIX PARA TÍTULOS LARGOS DEL CARRUSEL
+   ===================================================== */
+
+.projects-carousel-track .project-card {
+  grid-template-columns: minmax(0, 1.65fr) minmax(420px, 0.85fr);
+}
+
+.projects-carousel-track .project-info {
+  min-width: 0;
+  overflow: hidden;
+  padding: clamp(2rem, 3.5vw, 4rem);
+}
+
+.projects-carousel-track .project-info h3 {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 1.4rem;
+
+  font-size: clamp(2.4rem, 3.6vw, 4.6rem);
+  line-height: 0.98;
+
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.projects-carousel-track .project-info > p:not(.project-number) {
+  max-width: 30ch;
+}
+
+@media (max-width: 1200px) {
+  .projects-carousel-track .project-card {
+    grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.85fr);
+  }
+
+  .projects-carousel-track .project-info h3 {
+    font-size: clamp(2.2rem, 3.3vw, 3.8rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .projects-carousel-track .project-card {
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.9fr);
+  }
+
+  .projects-carousel-track .project-info h3 {
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+  }
+}
