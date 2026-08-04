@@ -1834,3 +1834,136 @@ ul {
     margin-top: 1.5rem;
   }
 }
+
+.hero-video .nav {
+  justify-content: flex-end;
+}
+
+/* =====================================================
+   HERO VIDEO — RECORTE DEL BORDE INTERNO
+   ===================================================== */
+
+.hero-video {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Contenedor que recorta el borde grabado en el video */
+
+.hero-video-frame {
+  position: absolute;
+  top: 50%;
+  left: -10vw;
+
+  width: min(64vw, 1050px);
+  height: min(82vh, 850px);
+
+  transform: translateY(-50%);
+
+  overflow: hidden;
+  background: #000;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* El video se amplía dentro del contenedor */
+
+.hero-video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 104%;
+  height: 104%;
+
+  transform: translate(-50%, -50%) scale(1.035);
+
+  object-fit: contain;
+  object-position: center;
+
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: #000;
+}
+
+/* Navegación a la derecha */
+
+.hero-video .nav {
+  position: relative;
+  z-index: 2;
+  justify-content: flex-end;
+}
+
+/* Fondo unificado */
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.02) 45%,
+      rgba(0, 0, 0, 0.12) 65%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+}
+
+/* Nombre debajo del título más grande */
+
+.hero-name {
+  margin: 2rem 0 0;
+  max-width: none;
+
+  color: rgba(255, 255, 255, 0.88);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: 0.015em;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .hero-video-frame {
+    left: -18vw;
+    width: 76vw;
+    height: 74vh;
+  }
+
+  .hero-video-bg {
+    width: 106%;
+    height: 106%;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
+/* Teléfono */
+
+@media (max-width: 760px) {
+  .hero-video-frame {
+    top: 42%;
+    left: -48vw;
+
+    width: 125vw;
+    height: 58vh;
+  }
+
+  .hero-video-bg {
+    width: 108%;
+    height: 108%;
+    transform: translate(-50%, -50%) scale(1.045);
+  }
+
+  .hero-name {
+    margin-top: 1.3rem;
+    font-size: 1.35rem;
+  }
+}
