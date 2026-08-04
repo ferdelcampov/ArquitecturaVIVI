@@ -1,115 +1,102 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const projectTrack = document.querySelector(".projects .project-grid");
-
-  const projectCards = Array.from(
-    document.querySelectorAll(".projects .project-card")
+  const projectsSection = document.querySelector(
+    ".projects-scroll-section"
   );
 
-  const filterButtons = Array.from(
-    document.querySelectorAll(".filter-btn")
+  const projectsTrack = document.querySelector(
+    ".projects-horizontal-track"
   );
 
-  const previousButton = document.querySelector(".carousel-prev");
-  const nextButton = document.querySelector(".carousel-next");
+  const progressBar = document.querySelector(
+    ".projects-progress-bar"
+  );
 
-  if (
-    !projectTrack ||
-    !projectCards.length ||
-    !previousButton ||
-    !nextButton
-  ) {
+  if (!projectsSection || !projectsTrack) {
     return;
   }
 
-  const getVisibleCards = () => {
-    return projectCards.filter(
-      (card) => !card.classList.contains("hidden")
-    );
+  let maximumHorizontalMovement = 0;
+  let ticking = false;
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  const clamp = (number, minimum, maximum) => {
+    return Math.min(Math.max(number, minimum), maximum);
   };
 
-  const getScrollAmount = () => {
-    const firstVisibleCard = getVisibleCards()[0];
+  const calculateMeasurements = () => {
+    maximumHorizontalMovement = Math.max(
+      0,
+      projectsTrack.scrollWidth - window.innerWidth
+    );
 
-    if (!firstVisibleCard) {
-      return projectTrack.clientWidth;
+    updateProjectsScroll();
+  };
+
+  const updateProjectsScroll = () => {
+    const sectionRect = projectsSection.getBoundingClientRect();
+
+    const scrollableDistance =
+      projectsSection.offsetHeight - window.innerHeight;
+
+    if (scrollableDistance <= 0) {
+      return;
     }
 
-    const trackStyles = window.getComputedStyle(projectTrack);
-    const gap =
-      parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+    const scrolledInsideSection = -sectionRect.top;
 
-    return firstVisibleCard.getBoundingClientRect().width + gap;
+    const progress = clamp(
+      scrolledInsideSection / scrollableDistance,
+      0,
+      1
+    );
+
+    if (prefersReducedMotion.matches) {
+      projectsTrack.style.transform = "translate3d(0, 0, 0)";
+    } else {
+      const horizontalPosition =
+        maximumHorizontalMovement * progress;
+
+      projectsTrack.style.transform =
+        `translate3d(${-horizontalPosition}px, 0, 0)`;
+    }
+
+    if (progressBar) {
+      progressBar.style.transform = `scaleX(${progress})`;
+    }
+
+    projectsSection.classList.toggle(
+      "is-active",
+      progress > 0 && progress < 1
+    );
+
+    ticking = false;
   };
 
-  const updateCarouselButtons = () => {
-    const maximumScroll =
-      projectTrack.scrollWidth - projectTrack.clientWidth;
-
-    const tolerance = 4;
-
-    previousButton.disabled =
-      projectTrack.scrollLeft <= tolerance;
-
-    nextButton.disabled =
-      projectTrack.scrollLeft >= maximumScroll - tolerance ||
-      maximumScroll <= tolerance;
+  const requestScrollUpdate = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateProjectsScroll);
+      ticking = true;
+    }
   };
 
-  const resetCarousel = () => {
-    projectTrack.scrollTo({
-      left: 0,
-      behavior: "smooth"
-    });
-
-    window.setTimeout(updateCarouselButtons, 350);
-  };
-
-  previousButton.addEventListener("click", () => {
-    projectTrack.scrollBy({
-      left: -getScrollAmount(),
-      behavior: "smooth"
-    });
+  window.addEventListener("scroll", requestScrollUpdate, {
+    passive: true
   });
 
-  nextButton.addEventListener("click", () => {
-    projectTrack.scrollBy({
-      left: getScrollAmount(),
-      behavior: "smooth"
-    });
-  });
+  window.addEventListener("resize", calculateMeasurements);
 
-  projectTrack.addEventListener("scroll", () => {
-    window.requestAnimationFrame(updateCarouselButtons);
-  });
+  window.addEventListener("load", calculateMeasurements);
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const selectedFilter = button.dataset.filter;
+  if ("ResizeObserver" in window) {
+    const resizeObserver = new ResizeObserver(
+      calculateMeasurements
+    );
 
-      filterButtons.forEach((filterButton) => {
-        filterButton.classList.toggle(
-          "active",
-          filterButton === button
-        );
-      });
+    resizeObserver.observe(projectsTrack);
+  }
 
-      projectCards.forEach((card) => {
-        const projectCategory = card.dataset.category;
-
-        const shouldShow =
-          selectedFilter === "all" ||
-          projectCategory === selectedFilter;
-
-        card.classList.toggle("hidden", !shouldShow);
-      });
-
-      resetCarousel();
-    });
-  });
-
-  window.addEventListener("resize", () => {
-    updateCarouselButtons();
-  });
-
-  updateCarouselButtons();
+  calculateMeasurements();
 });
