@@ -1635,3 +1635,202 @@ ul {
       );
   }
 }
+
+/* =====================================================
+   HERO FINAL LAYOUT
+   ===================================================== */
+
+.hero-video {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Video a la izquierda y ligeramente ampliado
+   para esconder cualquier borde incluido en el archivo */
+
+.hero-video-bg {
+  position: absolute;
+  top: 50%;
+  left: -10vw;
+
+  width: min(64vw, 1050px);
+  height: min(82vh, 850px);
+
+  transform: translateY(-50%) scale(1.04);
+
+  object-fit: contain;
+  object-position: center;
+
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: #000;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Fondo uniforme sin cambio visible de tono */
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.02) 44%,
+      rgba(0, 0, 0, 0.16) 60%,
+      rgba(0, 0, 0, 0.48) 100%
+    );
+}
+
+.hero-video .nav,
+.hero-video .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Bloque de texto más amplio */
+
+.hero-video .hero-content {
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 5vw 3vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+
+  text-align: right;
+}
+
+/* Texto superior */
+
+.hero-kicker {
+  margin: 0 0 1.8rem;
+  max-width: none;
+
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1rem, 1.45vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Título principal */
+
+.hero-video .hero-content h1 {
+  width: min(52vw, 800px);
+  max-width: none;
+  margin: 0;
+
+  font-size: clamp(4rem, 7.8vw, 8.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  text-align: right;
+}
+
+/* Nombre */
+
+.hero-name {
+  margin: 2rem 0 0;
+  max-width: none;
+
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.7rem);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+/* Botón */
+
+.hero-video .hero-content .btn {
+  margin-top: 2rem;
+  margin-left: auto;
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .hero-video-bg {
+    left: -18vw;
+    width: 76vw;
+    height: 74vh;
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .hero-video .hero-content h1 {
+    width: min(55vw, 620px);
+    font-size: clamp(3.6rem, 8vw, 6.5rem);
+  }
+
+  .hero-kicker {
+    font-size: 0.95rem;
+  }
+}
+
+/* Teléfono */
+
+@media (max-width: 760px) {
+  .hero-video {
+    min-height: 100svh;
+  }
+
+  .hero-video-bg {
+    top: 42%;
+    left: -48vw;
+
+    width: 125vw;
+    height: 58vh;
+
+    transform: translateY(-50%) scale(1.06);
+  }
+
+  .hero-video-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.04) 0%,
+        rgba(0, 0, 0, 0.28) 46%,
+        rgba(0, 0, 0, 0.78) 100%
+      );
+  }
+
+  .hero-video .hero-content {
+    padding: 0 6vw 8vh;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .hero-kicker {
+    margin-bottom: 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-video .hero-content h1 {
+    width: 82vw;
+    font-size: clamp(3.1rem, 15vw, 5rem);
+    line-height: 0.9;
+  }
+
+  .hero-name {
+    margin-top: 1.3rem;
+    font-size: 1.15rem;
+  }
+
+  .hero-video .hero-content .btn {
+    margin-top: 1.5rem;
+  }
+}
