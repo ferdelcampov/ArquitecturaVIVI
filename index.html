@@ -51,144 +51,190 @@
         </div>
       </section>
 
-      <section class="projects-scroll-section" id="projects">
-        <div class="projects-sticky">
-          <div class="projects-inner">
-            <div class="section-heading projects-heading">
-              <p class="eyebrow">Featured projects</p>
-              <h2>A collection of realized ideas.</h2>
-            </div>
+      <section class="section projects" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Featured projects</p>
+          <h2>A collection of realized ideas.</h2>
+        </div>
 
-            <div class="projects-progress" aria-hidden="true">
-              <span class="projects-progress-bar"></span>
-            </div>
+        <div class="projects-toolbar">
+          <div class="filters" aria-label="Filter projects">
+            <button class="filter-btn active" data-filter="all" type="button">
+              All
+            </button>
 
-            <div class="projects-horizontal-viewport">
-              <div class="projects-horizontal-track">
-                <a
-                  class="project-card"
-                  data-category="residential"
-                  href="courtyard-house.html"
-                >
-                  <div class="project-image image-courtyard">
-                    <img
-                      src="assets/courtyard-house/ELEVATION.png"
-                      alt="Courtyard House elevation"
-                      loading="lazy"
-                    />
-                  </div>
+            <button class="filter-btn" data-filter="residential" type="button">
+              Residential
+            </button>
 
-                  <div class="project-info">
-                    <p class="project-number">01</p>
-                    <h3>Courtyard House</h3>
-                    <p>
-                      Shared courtyard house proposal with a calm and open domestic
-                      experience.
-                    </p>
-                  </div>
-                </a>
+            <button class="filter-btn" data-filter="commercial" type="button">
+              Commercial
+            </button>
 
-                <a
-                  class="project-card"
-                  data-category="residential"
-                  href="mid-rise.html"
-                >
-                  <div class="project-image image-courtyard">
-                    <img
-                      src="assets/mid-rise/FRONT%20ELEVATION.png"
-                      alt="Front elevation — Mid-rise Apartment Building"
-                      loading="lazy"
-                    />
-                  </div>
+            <button class="filter-btn" data-filter="interior" type="button">
+              Interior design
+            </button>
+          </div>
 
-                  <div class="project-info">
-                    <p class="project-number">02</p>
-                    <h3>Mid-rise Apartment Building</h3>
-                    <p>
-                      Mixed-use mid-rise with shared terraces and active ground floor
-                      retail.
-                    </p>
-                  </div>
-                </a>
+          <div class="carousel-controls" aria-label="Project carousel controls">
+            <button
+              class="carousel-btn carousel-prev"
+              type="button"
+              aria-label="Previous projects"
+            >
+              ←
+            </button>
 
-                <a
-                  class="project-card"
-                  data-category="interior"
-                  href="fish-market.html"
-                >
-                  <div class="project-image image-courtyard">
-                    <img
-                      src="assets/fish-market/diagram1_page-0001.jpg"
-                      alt="Fish Market concept image"
-                      loading="lazy"
-                    />
-                  </div>
+            <button
+              class="carousel-btn carousel-next"
+              type="button"
+              aria-label="Next projects"
+            >
+              →
+            </button>
+          </div>
+        </div>
 
-                  <div class="project-info">
-                    <p class="project-number">03</p>
-                    <h3>Fish Market</h3>
-                    <p>
-                      Contemporary interior design that combines warmth, texture,
-                      and volume.
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  class="project-card"
-                  data-category="commercial"
-                  href="Stoa-of-Attalos.html"
-                >
-                  <div class="project-image image-courtyard">
-                    <img
-                      src="assets/Stoa-of-Attalos/Foto%20Dibujo%20Stoa%20of%20Attalos.pdf.png"
-                      alt="Stoa of Attalos drawing"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div class="project-info">
-                    <p class="project-number">04</p>
-                    <h3>Stoa of Attalos</h3>
-                    <p>
-                      Historic and civic study of a public colonnade in the ancient
-                      Agora.
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  class="project-card"
-                  data-category="residential"
-                  href="Meditation-Space.html"
-                >
-                  <div class="project-image image-courtyard">
-                    <img
-                      src="assets/Meditation-Space/meditation%20collage%201.pdf.png"
-                      alt="Meditation Space collage"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  <div class="project-info">
-                    <p class="project-number">05</p>
-                    <h3>Meditation Space</h3>
-                    <p>
-                      Project focused on daily functionality and family comfort.
-                    </p>
-                  </div>
-                </a>
+        <div class="project-carousel">
+          <div class="project-grid">
+            <a
+              class="project-card"
+              data-category="residential"
+              href="courtyard-house.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/courtyard-house/ELEVATION.png"
+                  alt="Courtyard House elevation"
+                  loading="lazy"
+                />
               </div>
-            </div>
 
-            <p class="projects-scroll-hint">
-              Scroll to explore
-              <span aria-hidden="true">→</span>
-            </p>
+              <div class="project-info">
+                <h3>Courtyard House</h3>
+
+                <p>
+                  Shared courtyard house proposal with a calm and open domestic
+                  experience.
+                </p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="residential"
+              href="mid-rise.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/mid-rise/FRONT%20ELEVATION.png"
+                  alt="Front elevation — Mid-rise Apartment Building"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Mid-rise Apartment Building</h3>
+
+                <p>
+                  Mixed-use mid-rise with shared terraces and active ground floor
+                  retail.
+                </p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="interior"
+              href="fish-market.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/fish-market/diagram1_page-0001.jpg"
+                  alt="Fish Market concept image"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Fish Market</h3>
+
+                <p>
+                  Contemporary interior design that combines warmth, texture, and
+                  volume.
+                </p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="commercial"
+              href="Stoa-of-Attalos.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/Stoa-of-Attalos/Foto%20Dibujo%20Stoa%20of%20Attalos.pdf.png"
+                  alt="Stoa of Attalos drawing"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Stoa of Attalos</h3>
+
+                <p>
+                  Historic and civic study of a public colonnade in the ancient
+                  Agora.
+                </p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="residential"
+              href="Meditation-Space.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/Meditation-Space/meditation%20collage%201.pdf.png"
+                  alt="Meditation Space collage"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Meditation Space</h3>
+
+                <p>Project focused on daily functionality and family comfort.</p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="residential"
+              href="Spanish-Custom-House.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/Spanish-Custom-House/ARC%20203%20VIVIANA%20GORDILLO%20FINAL-1.png"
+                  alt="Spanish Custom House site plan and elevations"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Spanish Custom House</h3>
+
+                <p>
+                  Redrawing study of a historic house in New Orleans, from the
+                  Historic American Buildings Survey.
+                </p>
+              </div>
+            </a>
           </div>
         </div>
       </section>
-      
+
       <section class="section values">
         <div class="section-heading">
           <p class="eyebrow">Approach</p>
