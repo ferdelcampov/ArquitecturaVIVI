@@ -3,23 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Viviana | Architecture Portfolio</title>
+
     <meta
       name="description"
       content="Architecture portfolio featuring residential, commercial, and interior design projects."
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=3" />
+
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
+
   <body>
-    <header class="hero" style="--hero-image:url('assets/mid-rise/FRONT%20ELEVATION.png')">
+    <header
+      class="hero"
+      style="--hero-image:url('assets/mid-rise/FRONT%20ELEVATION.png')"
+    >
       <nav class="nav">
         <a class="brand" href="#">Viviana Gordillo Valle</a>
+
         <div class="nav-links">
           <a href="#projects">Projects</a>
           <a href="#about">About</a>
@@ -29,58 +39,73 @@
 
       <div class="hero-content">
         <p class="eyebrow">Architecture Portfolio</p>
+
         <h1>Designing identity.</h1>
-        
+
         <a class="btn" href="#projects">Explore projects</a>
       </div>
     </header>
 
     <main>
+      <!-- About -->
       <section class="section intro" id="about">
         <div class="section-heading">
           <p class="eyebrow">About</p>
+
           <h2>Architecture designed to live, work and feel.</h2>
         </div>
+
         <div class="intro-grid">
           <p>
-          I'm Viviana Gordillo, a third-year Bachelor of Architecture student at the University of Miami, minoring in Urban Design — originally from Mexico City, now building my future in Miami. Architecture, for me, isn't just about buildings. It's about creating spaces that genuinely make people's lives better, that bring communities together, and that respect the environment they're part of.
+            I'm Viviana Gordillo, a third-year Bachelor of Architecture student
+            at the University of Miami, minoring in Urban Design — originally
+            from Mexico City, now building my future in Miami. Architecture,
+            for me, isn't just about buildings. It's about creating spaces that
+            genuinely make people's lives better, that bring communities
+            together, and that respect the environment they're part of.
           </p>
+
           <p>
-           I'm especially drawn to sustainable and bioclimatic design, public space, and finding that sweet spot where architecture and nature actually work with each other instead of against it. What I love most about this field is that everything architects do has the power to shape how someone experiences a place — and there's nothing quite like turning an idea on paper into a space where life actually happens.
+            I'm especially drawn to sustainable and bioclimatic design, public
+            space, and finding that sweet spot where architecture and nature
+            actually work with each other instead of against it. What I love
+            most about this field is that everything architects do has the power
+            to shape how someone experiences a place — and there's nothing quite
+            like turning an idea on paper into a space where life actually
+            happens.
           </p>
         </div>
       </section>
 
-      <section class="section projects" id="projects">
+      <!-- Featured projects carousel -->
+      <section
+        class="section projects projects-carousel-section"
+        id="projects"
+      >
         <div class="section-heading">
           <p class="eyebrow">Featured projects</p>
+
           <h2>A collection of realized ideas.</h2>
         </div>
 
-        <div class="projects-toolbar">
-          <div class="filters" aria-label="Filter projects">
-            <button class="filter-btn active" data-filter="all" type="button">
-              All
-            </button>
+        <div class="projects-carousel-header">
+          <p
+            class="projects-carousel-indicator"
+            aria-label="Current project position"
+          >
+            <span class="current-project">01</span>
+            <span aria-hidden="true">/</span>
+            <span class="total-projects">06</span>
+          </p>
 
-            <button class="filter-btn" data-filter="residential" type="button">
-              Residential
-            </button>
-
-            <button class="filter-btn" data-filter="commercial" type="button">
-              Commercial
-            </button>
-
-            <button class="filter-btn" data-filter="interior" type="button">
-              Interior design
-            </button>
-          </div>
-
-          <div class="carousel-controls" aria-label="Project carousel controls">
+          <div
+            class="carousel-controls"
+            aria-label="Project carousel controls"
+          >
             <button
               class="carousel-btn carousel-prev"
               type="button"
-              aria-label="Previous projects"
+              aria-label="Previous project"
             >
               ←
             </button>
@@ -88,18 +113,21 @@
             <button
               class="carousel-btn carousel-next"
               type="button"
-              aria-label="Next projects"
+              aria-label="Next project"
             >
               →
             </button>
           </div>
         </div>
 
-        <div class="project-carousel">
-          <div class="project-grid">
+        <div
+          class="projects-carousel-viewport"
+          aria-label="Featured projects"
+        >
+          <div class="projects-carousel-track">
+            <!-- Project 1 -->
             <a
               class="project-card"
-              data-category="residential"
               href="courtyard-house.html"
             >
               <div class="project-image image-courtyard">
@@ -111,6 +139,8 @@
               </div>
 
               <div class="project-info">
+                <p class="project-number">01</p>
+
                 <h3>Courtyard House</h3>
 
                 <p>
@@ -120,9 +150,9 @@
               </div>
             </a>
 
+            <!-- Project 2 -->
             <a
               class="project-card"
-              data-category="residential"
               href="mid-rise.html"
             >
               <div class="project-image image-courtyard">
@@ -134,18 +164,20 @@
               </div>
 
               <div class="project-info">
+                <p class="project-number">02</p>
+
                 <h3>Mid-rise Apartment Building</h3>
 
                 <p>
-                  Mixed-use mid-rise with shared terraces and active ground floor
-                  retail.
+                  Mixed-use mid-rise with shared terraces and active ground
+                  floor retail.
                 </p>
               </div>
             </a>
 
+            <!-- Project 3 -->
             <a
               class="project-card"
-              data-category="interior"
               href="fish-market.html"
             >
               <div class="project-image image-courtyard">
@@ -157,18 +189,20 @@
               </div>
 
               <div class="project-info">
+                <p class="project-number">03</p>
+
                 <h3>Fish Market</h3>
 
                 <p>
-                  Contemporary interior design that combines warmth, texture, and
-                  volume.
+                  Contemporary interior design that combines warmth, texture,
+                  and volume.
                 </p>
               </div>
             </a>
 
+            <!-- Project 4 -->
             <a
               class="project-card"
-              data-category="commercial"
               href="Stoa-of-Attalos.html"
             >
               <div class="project-image image-courtyard">
@@ -180,6 +214,8 @@
               </div>
 
               <div class="project-info">
+                <p class="project-number">04</p>
+
                 <h3>Stoa of Attalos</h3>
 
                 <p>
@@ -189,9 +225,9 @@
               </div>
             </a>
 
+            <!-- Project 5 -->
             <a
               class="project-card"
-              data-category="residential"
               href="Meditation-Space.html"
             >
               <div class="project-image image-courtyard">
@@ -203,15 +239,19 @@
               </div>
 
               <div class="project-info">
+                <p class="project-number">05</p>
+
                 <h3>Meditation Space</h3>
 
-                <p>Project focused on daily functionality and family comfort.</p>
+                <p>
+                  Project focused on daily functionality and family comfort.
+                </p>
               </div>
             </a>
 
+            <!-- Project 6 -->
             <a
               class="project-card"
-              data-category="residential"
               href="Spanish-Custom-House.html"
             >
               <div class="project-image image-courtyard">
@@ -223,11 +263,13 @@
               </div>
 
               <div class="project-info">
+                <p class="project-number">06</p>
+
                 <h3>Spanish Custom House</h3>
 
                 <p>
-                  Redrawing study of a historic house in New Orleans, from the
-                  Historic American Buildings Survey.
+                  Redrawing study of a historic house in New Orleans, based on
+                  documentation from the Historic American Buildings Survey.
                 </p>
               </div>
             </a>
@@ -235,36 +277,51 @@
         </div>
       </section>
 
+      <!-- Approach -->
       <section class="section values">
         <div class="section-heading">
           <p class="eyebrow">Approach</p>
+
           <h2>Details that make the difference.</h2>
         </div>
+
         <div class="value-grid">
           <div>
             <h3>Functionality</h3>
+
             <p>Practical, comfortable spaces for everyday life.</p>
           </div>
+
           <div>
             <h3>Materiality</h3>
+
             <p>Selection of textures and finishes that add character.</p>
           </div>
+
           <div>
             <h3>Lighting</h3>
-            <p>Strategic use of light to create warm and dynamic atmospheres.</p>
+
+            <p>
+              Strategic use of light to create warm and dynamic atmospheres.
+            </p>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Contact -->
     <section class="section contact" id="contact">
       <div class="section-heading">
         <p class="eyebrow">Contact</p>
+
         <h2>Let's talk about your next project.</h2>
       </div>
+
       <p>
         If you'd like to collaborate or see more work, email
-        <a href="mailto:tuemail@dominio.com">tuemail@dominio.com</a>.
+        <a href="mailto:tuemail@dominio.com">
+          tuemail@dominio.com
+        </a>.
       </p>
     </section>
 
