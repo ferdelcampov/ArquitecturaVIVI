@@ -57,63 +57,158 @@
           <h2>A collection of realized ideas.</h2>
         </div>
 
-        <div class="filters" aria-label="Filter projects">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="residential">Residential</button>
-          <button class="filter-btn" data-filter="commercial">Commercial</button>
-          <button class="filter-btn" data-filter="interior">Interior design</button>
+        <div class="projects-toolbar">
+          <div class="filters" aria-label="Filter projects">
+            <button class="filter-btn active" data-filter="all" type="button">
+              All
+            </button>
+
+            <button class="filter-btn" data-filter="residential" type="button">
+              Residential
+            </button>
+
+            <button class="filter-btn" data-filter="commercial" type="button">
+              Commercial
+            </button>
+
+            <button class="filter-btn" data-filter="interior" type="button">
+              Interior design
+            </button>
+          </div>
+
+          <div class="carousel-controls" aria-label="Project carousel controls">
+            <button
+              class="carousel-btn carousel-prev"
+              type="button"
+              aria-label="Previous projects"
+            >
+              ←
+            </button>
+
+            <button
+              class="carousel-btn carousel-next"
+              type="button"
+              aria-label="Next projects"
+            >
+              →
+            </button>
+          </div>
         </div>
 
-        <div class="project-grid">
-          <a class="project-card" data-category="residential" href="courtyard-house.html">
-            <div class="project-image image-courtyard">
-              <img src="assets/courtyard-house/ELEVATION.png" alt="Courtyard House elevation" loading="lazy" />
-            </div>
-            <div class="project-info">
-              <h3>Courtyard House</h3>
-              <p>Shared courtyard house proposal with a calm and open domestic experience.</p>
-            </div>
-          </a>
+        <div class="project-carousel">
+          <div class="project-grid">
+            <a
+              class="project-card"
+              data-category="residential"
+              href="courtyard-house.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/courtyard-house/ELEVATION.png"
+                  alt="Courtyard House elevation"
+                  loading="lazy"
+                />
+              </div>
 
-          <a class="project-card" data-category="residential" href="mid-rise.html">
-            <div class="project-image image-courtyard">
-              <img src="assets/mid-rise/FRONT%20ELEVATION.png" alt="Front elevation — Mid-rise Apartment Building" loading="lazy" />
-            </div>
-            <div class="project-info">
-              <h3>Mid-rise Apartment Building</h3>
-              <p>Mixed-use mid-rise with shared terraces and active ground floor retail.</p>
-            </div>
-          </a>
+              <div class="project-info">
+                <h3>Courtyard House</h3>
 
-          <a class="project-card" data-category="interior" href="fish-market.html">
-            <div class="project-image image-courtyard">
-              <img src="assets/fish-market/diagram1_page-0001.jpg" alt="Fish Market concept image" loading="lazy" />
-            </div>
-            <div class="project-info">
-              <h3>Fish Market</h3>
-              <p>Contemporary interior design that combines warmth, texture, and volume.</p>
-            </div>
-          </a>
+                <p>
+                  Shared courtyard house proposal with a calm and open domestic
+                  experience.
+                </p>
+              </div>
+            </a>
 
-          <a class="project-card" data-category="commercial" href="Stoa-of-Attalos.html">
-            <div class="project-image image-courtyard">
-              <img src="assets/Stoa-of-Attalos/Foto%20Dibujo%20Stoa%20of%20Attalos.pdf.png" alt="Stoa of Attalos drawing" loading="lazy" />
-            </div>
-            <div class="project-info">
-              <h3>Stoa of Attalos</h3>
-              <p>Historic and civic study of a public colonnade in the ancient Agora.</p>
-            </div>
-          </a>
+            <a
+              class="project-card"
+              data-category="residential"
+              href="mid-rise.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/mid-rise/FRONT%20ELEVATION.png"
+                  alt="Front elevation — Mid-rise Apartment Building"
+                  loading="lazy"
+                />
+              </div>
 
-          <a class="project-card" data-category="residential" href="Meditation-Space.html">
-            <div class="project-image image-courtyard">
-              <img src="assets/Meditation-Space/meditation%20collage%201.pdf.png" alt="Meditation Space collage" loading="lazy" />
-            </div>
-            <div class="project-info">
-              <h3>Meditation Space</h3>
-              <p>Project focused on daily functionality and family comfort.</p>
-            </div>
-          </a>
+              <div class="project-info">
+                <h3>Mid-rise Apartment Building</h3>
+
+                <p>
+                  Mixed-use mid-rise with shared terraces and active ground floor
+                  retail.
+                </p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="interior"
+              href="fish-market.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/fish-market/diagram1_page-0001.jpg"
+                  alt="Fish Market concept image"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Fish Market</h3>
+
+                <p>
+                  Contemporary interior design that combines warmth, texture, and
+                  volume.
+                </p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="commercial"
+              href="Stoa-of-Attalos.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/Stoa-of-Attalos/Foto%20Dibujo%20Stoa%20of%20Attalos.pdf.png"
+                  alt="Stoa of Attalos drawing"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Stoa of Attalos</h3>
+
+                <p>
+                  Historic and civic study of a public colonnade in the ancient
+                  Agora.
+                </p>
+              </div>
+            </a>
+
+            <a
+              class="project-card"
+              data-category="residential"
+              href="Meditation-Space.html"
+            >
+              <div class="project-image image-courtyard">
+                <img
+                  src="assets/Meditation-Space/meditation%20collage%201.pdf.png"
+                  alt="Meditation Space collage"
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="project-info">
+                <h3>Meditation Space</h3>
+
+                <p>Project focused on daily functionality and family comfort.</p>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
