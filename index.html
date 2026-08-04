@@ -19,14 +19,29 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="styles.css?v=5" />
   </head>
 
   <body>
-    <header
-      class="hero"
-      style="--hero-image:url('assets/mid-rise/FRONT%20ELEVATION.png')"
-    >
+    <!-- Hero con video -->
+    <header class="hero hero-video">
+      <video
+        class="hero-video-bg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source
+          src="assets/video/portfolio-header.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+      <div class="hero-video-overlay"></div>
+
       <nav class="nav">
         <a class="brand" href="#">Viviana Gordillo Valle</a>
 
