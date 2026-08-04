@@ -1,201 +1,131 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const projectsSection = document.querySelector(
-    ".projects-scroll-section"
+  const viewport = document.querySelector(
+    ".projects-carousel-viewport"
   );
 
-  const projectsViewport = document.querySelector(
-    ".projects-horizontal-viewport"
+  const track = document.querySelector(
+    ".projects-carousel-track"
   );
 
-  const projectsTrack = document.querySelector(
-    ".projects-horizontal-track"
+  const cards = Array.from(
+    document.querySelectorAll(
+      ".projects-carousel-track .project-card"
+    )
   );
 
-  const progressBar = document.querySelector(
-    ".projects-progress-bar"
+  const previousButton = document.querySelector(
+    ".carousel-prev"
   );
 
-  if (!projectsSection || !projectsViewport || !projectsTrack) {
+  const nextButton = document.querySelector(
+    ".carousel-next"
+  );
+
+  const currentProjectElement = document.querySelector(
+    ".current-project"
+  );
+
+  const totalProjectsElement = document.querySelector(
+    ".total-projects"
+  );
+
+  if (
+    !viewport ||
+    !track ||
+    cards.length === 0 ||
+    !previousButton ||
+    !nextButton
+  ) {
     return;
   }
 
-  let maximumHorizontalScroll = 0;
-  let ticking = false;
-  let isManuallyInteracting = false;
-  let manualInteractionTimer;
+  let currentIndex = 0;
+  let scrollTimeout;
 
-  const reducedMotionQuery = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  );
-
-  const clamp = (value, minimum, maximum) => {
-    return Math.min(Math.max(value, minimum), maximum);
+  const formatNumber = (number) => {
+    return String(number).padStart(2, "0");
   };
 
-  const calculateMeasurements = () => {
-    maximumHorizontalScroll = Math.max(
+  const getTrackGap = () => {
+    const styles = window.getComputedStyle(track);
+
+    return parseFloat(styles.gap) || 0;
+  };
+
+  const getSlideWidth = () => {
+    return cards[0].getBoundingClientRect().width + getTrackGap();
+  };
+
+  const updateInterface = () => {
+    previousButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex === cards.length - 1;
+
+    if (currentProjectElement) {
+      currentProjectElement.textContent =
+        formatNumber(currentIndex + 1);
+    }
+
+    if (totalProjectsElement) {
+      totalProjectsElement.textContent =
+        formatNumber(cards.length);
+    }
+  };
+
+  const goToProject = (index) => {
+    currentIndex = Math.max(
       0,
-      projectsViewport.scrollWidth - projectsViewport.clientWidth
+      Math.min(index, cards.length - 1)
     );
 
-    updateProjectsFromVerticalScroll();
+    viewport.scrollTo({
+      left: currentIndex * getSlideWidth(),
+      behavior: "smooth"
+    });
+
+    updateInterface();
   };
 
-  const getSectionProgress = () => {
-    const sectionRectangle =
-      projectsSection.getBoundingClientRect();
+  previousButton.addEventListener("click", () => {
+    goToProject(currentIndex - 1);
+  });
 
-    const verticalDistance =
-      projectsSection.offsetHeight - window.innerHeight;
+  nextButton.addEventListener("click", () => {
+    goToProject(currentIndex + 1);
+  });
 
-    if (verticalDistance <= 0) {
-      return 0;
-    }
-
-    return clamp(
-      -sectionRectangle.top / verticalDistance,
-      0,
-      1
-    );
-  };
-
-  const updateProgressBar = () => {
-    if (!progressBar || maximumHorizontalScroll <= 0) {
-      return;
-    }
-
-    const horizontalProgress = clamp(
-      projectsViewport.scrollLeft / maximumHorizontalScroll,
-      0,
-      1
-    );
-
-    progressBar.style.transform =
-      `scaleX(${horizontalProgress})`;
-  };
-
-  const updateProjectsFromVerticalScroll = () => {
-    const progress = getSectionProgress();
-
-    if (
-      !reducedMotionQuery.matches &&
-      !isManuallyInteracting
-    ) {
-      const targetHorizontalPosition =
-        maximumHorizontalScroll * progress;
-
-      projectsViewport.scrollLeft =
-        targetHorizontalPosition;
-    }
-
-    updateProgressBar();
-
-    projectsSection.classList.toggle(
-      "is-active",
-      progress > 0 && progress < 1
-    );
-
-    ticking = false;
-  };
-
-  const requestVerticalUpdate = () => {
-    if (ticking) {
-      return;
-    }
-
-    ticking = true;
-
-    window.requestAnimationFrame(
-      updateProjectsFromVerticalScroll
-    );
-  };
-
-  const startManualInteraction = () => {
-    isManuallyInteracting = true;
-
-    window.clearTimeout(manualInteractionTimer);
-  };
-
-  const finishManualInteraction = () => {
-    window.clearTimeout(manualInteractionTimer);
-
-    manualInteractionTimer = window.setTimeout(() => {
-      isManuallyInteracting = false;
-    }, 700);
-  };
-
-  projectsViewport.addEventListener(
-    "pointerdown",
-    startManualInteraction
-  );
-
-  projectsViewport.addEventListener(
-    "pointerup",
-    finishManualInteraction
-  );
-
-  projectsViewport.addEventListener(
-    "pointercancel",
-    finishManualInteraction
-  );
-
-  projectsViewport.addEventListener(
-    "touchstart",
-    startManualInteraction,
-    { passive: true }
-  );
-
-  projectsViewport.addEventListener(
-    "touchend",
-    finishManualInteraction,
-    { passive: true }
-  );
-
-  projectsViewport.addEventListener(
-    "wheel",
-    (event) => {
-      const horizontalMovement =
-        Math.abs(event.deltaX) > Math.abs(event.deltaY);
-
-      if (horizontalMovement || event.shiftKey) {
-        startManualInteraction();
-        finishManualInteraction();
-      }
-    },
-    { passive: true }
-  );
-
-  projectsViewport.addEventListener(
+  viewport.addEventListener(
     "scroll",
     () => {
-      window.requestAnimationFrame(updateProgressBar);
+      window.clearTimeout(scrollTimeout);
+
+      scrollTimeout = window.setTimeout(() => {
+        const slideWidth = getSlideWidth();
+
+        if (slideWidth <= 0) {
+          return;
+        }
+
+        currentIndex = Math.round(
+          viewport.scrollLeft / slideWidth
+        );
+
+        currentIndex = Math.max(
+          0,
+          Math.min(currentIndex, cards.length - 1)
+        );
+
+        updateInterface();
+      }, 80);
     },
     { passive: true }
   );
 
-  window.addEventListener(
-    "scroll",
-    requestVerticalUpdate,
-    { passive: true }
-  );
+  window.addEventListener("resize", () => {
+    viewport.scrollLeft =
+      currentIndex * getSlideWidth();
 
-  window.addEventListener(
-    "resize",
-    calculateMeasurements
-  );
+    updateInterface();
+  });
 
-  window.addEventListener(
-    "load",
-    calculateMeasurements
-  );
-
-  if ("ResizeObserver" in window) {
-    const projectsResizeObserver =
-      new ResizeObserver(calculateMeasurements);
-
-    projectsResizeObserver.observe(projectsTrack);
-    projectsResizeObserver.observe(projectsViewport);
-  }
-
-  calculateMeasurements();
+  updateInterface();
 });
