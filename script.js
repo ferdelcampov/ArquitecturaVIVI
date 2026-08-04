@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ".projects-scroll-section"
   );
 
+  const projectsViewport = document.querySelector(
+    ".projects-horizontal-viewport"
+  );
+
   const projectsTrack = document.querySelector(
     ".projects-horizontal-track"
   );
@@ -11,61 +15,80 @@ document.addEventListener("DOMContentLoaded", () => {
     ".projects-progress-bar"
   );
 
-  if (!projectsSection || !projectsTrack) {
+  if (!projectsSection || !projectsViewport || !projectsTrack) {
     return;
   }
 
-  let maximumHorizontalMovement = 0;
+  let maximumHorizontalScroll = 0;
   let ticking = false;
+  let isManuallyInteracting = false;
+  let manualInteractionTimer;
 
-  const prefersReducedMotion = window.matchMedia(
+  const reducedMotionQuery = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   );
 
-  const clamp = (number, minimum, maximum) => {
-    return Math.min(Math.max(number, minimum), maximum);
+  const clamp = (value, minimum, maximum) => {
+    return Math.min(Math.max(value, minimum), maximum);
   };
 
   const calculateMeasurements = () => {
-    maximumHorizontalMovement = Math.max(
+    maximumHorizontalScroll = Math.max(
       0,
-      projectsTrack.scrollWidth - window.innerWidth
+      projectsViewport.scrollWidth - projectsViewport.clientWidth
     );
 
-    updateProjectsScroll();
+    updateProjectsFromVerticalScroll();
   };
 
-  const updateProjectsScroll = () => {
-    const sectionRect = projectsSection.getBoundingClientRect();
+  const getSectionProgress = () => {
+    const sectionRectangle =
+      projectsSection.getBoundingClientRect();
 
-    const scrollableDistance =
+    const verticalDistance =
       projectsSection.offsetHeight - window.innerHeight;
 
-    if (scrollableDistance <= 0) {
+    if (verticalDistance <= 0) {
+      return 0;
+    }
+
+    return clamp(
+      -sectionRectangle.top / verticalDistance,
+      0,
+      1
+    );
+  };
+
+  const updateProgressBar = () => {
+    if (!progressBar || maximumHorizontalScroll <= 0) {
       return;
     }
 
-    const scrolledInsideSection = -sectionRect.top;
-
-    const progress = clamp(
-      scrolledInsideSection / scrollableDistance,
+    const horizontalProgress = clamp(
+      projectsViewport.scrollLeft / maximumHorizontalScroll,
       0,
       1
     );
 
-    if (prefersReducedMotion.matches) {
-      projectsTrack.style.transform = "translate3d(0, 0, 0)";
-    } else {
-      const horizontalPosition =
-        maximumHorizontalMovement * progress;
+    progressBar.style.transform =
+      `scaleX(${horizontalProgress})`;
+  };
 
-      projectsTrack.style.transform =
-        `translate3d(${-horizontalPosition}px, 0, 0)`;
+  const updateProjectsFromVerticalScroll = () => {
+    const progress = getSectionProgress();
+
+    if (
+      !reducedMotionQuery.matches &&
+      !isManuallyInteracting
+    ) {
+      const targetHorizontalPosition =
+        maximumHorizontalScroll * progress;
+
+      projectsViewport.scrollLeft =
+        targetHorizontalPosition;
     }
 
-    if (progressBar) {
-      progressBar.style.transform = `scaleX(${progress})`;
-    }
+    updateProgressBar();
 
     projectsSection.classList.toggle(
       "is-active",
@@ -75,27 +98,103 @@ document.addEventListener("DOMContentLoaded", () => {
     ticking = false;
   };
 
-  const requestScrollUpdate = () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateProjectsScroll);
-      ticking = true;
+  const requestVerticalUpdate = () => {
+    if (ticking) {
+      return;
     }
+
+    ticking = true;
+
+    window.requestAnimationFrame(
+      updateProjectsFromVerticalScroll
+    );
   };
 
-  window.addEventListener("scroll", requestScrollUpdate, {
-    passive: true
-  });
+  const startManualInteraction = () => {
+    isManuallyInteracting = true;
 
-  window.addEventListener("resize", calculateMeasurements);
+    window.clearTimeout(manualInteractionTimer);
+  };
 
-  window.addEventListener("load", calculateMeasurements);
+  const finishManualInteraction = () => {
+    window.clearTimeout(manualInteractionTimer);
+
+    manualInteractionTimer = window.setTimeout(() => {
+      isManuallyInteracting = false;
+    }, 700);
+  };
+
+  projectsViewport.addEventListener(
+    "pointerdown",
+    startManualInteraction
+  );
+
+  projectsViewport.addEventListener(
+    "pointerup",
+    finishManualInteraction
+  );
+
+  projectsViewport.addEventListener(
+    "pointercancel",
+    finishManualInteraction
+  );
+
+  projectsViewport.addEventListener(
+    "touchstart",
+    startManualInteraction,
+    { passive: true }
+  );
+
+  projectsViewport.addEventListener(
+    "touchend",
+    finishManualInteraction,
+    { passive: true }
+  );
+
+  projectsViewport.addEventListener(
+    "wheel",
+    (event) => {
+      const horizontalMovement =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY);
+
+      if (horizontalMovement || event.shiftKey) {
+        startManualInteraction();
+        finishManualInteraction();
+      }
+    },
+    { passive: true }
+  );
+
+  projectsViewport.addEventListener(
+    "scroll",
+    () => {
+      window.requestAnimationFrame(updateProgressBar);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "scroll",
+    requestVerticalUpdate,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "resize",
+    calculateMeasurements
+  );
+
+  window.addEventListener(
+    "load",
+    calculateMeasurements
+  );
 
   if ("ResizeObserver" in window) {
-    const resizeObserver = new ResizeObserver(
-      calculateMeasurements
-    );
+    const projectsResizeObserver =
+      new ResizeObserver(calculateMeasurements);
 
-    resizeObserver.observe(projectsTrack);
+    projectsResizeObserver.observe(projectsTrack);
+    projectsResizeObserver.observe(projectsViewport);
   }
 
   calculateMeasurements();
