@@ -584,3 +584,128 @@ ul {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* =====================================================
+   FEATURED PROJECTS CAROUSEL
+   ===================================================== */
+
+.projects-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin: -1.4rem 0 3rem;
+}
+
+.projects-toolbar .filters {
+  margin: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.project-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.projects .project-grid {
+  display: flex;
+  grid-template-columns: none;
+  gap: 2.4rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+  padding-bottom: 0.5rem;
+}
+
+.projects .project-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.projects .project-card {
+  flex: 0 0 calc((100% - 2.4rem) / 2);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.projects .project-card.hidden {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .projects-toolbar {
+    align-items: flex-end;
+    gap: 1.2rem;
+  }
+
+  .projects-toolbar .filters {
+    flex: 1;
+  }
+
+  .carousel-controls {
+    padding-bottom: 0.1rem;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .projects .project-grid {
+    gap: 1.2rem;
+  }
+
+  .projects .project-card {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .projects-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .carousel-controls {
+    justify-content: flex-end;
+  }
+}
