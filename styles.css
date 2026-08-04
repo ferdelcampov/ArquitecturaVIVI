@@ -1546,3 +1546,92 @@ ul {
     font-size: clamp(2.8rem, 13vw, 4.8rem);
   }
 }
+
+/* =====================================================
+   HERO VIDEO — SIN CORTE VERTICAL Y FONDO UNIFICADO
+   ===================================================== */
+
+.hero-video {
+  background: #000;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 50%;
+  left: -8vw;
+
+  width: min(62vw, 950px);
+  height: min(76vh, 760px);
+
+  transform: translateY(-50%);
+
+  object-fit: contain;
+  object-position: center;
+
+  background: #000;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Quita cualquier diferencia visible entre video y encabezado */
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.04) 45%,
+      rgba(0, 0, 0, 0.35) 68%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .hero-video-bg {
+    left: -16vw;
+    width: 72vw;
+    height: 68vh;
+    object-fit: contain;
+  }
+}
+
+/* Teléfono */
+
+@media (max-width: 760px) {
+  .hero-video {
+    background: #000;
+  }
+
+  .hero-video-bg {
+    top: 50%;
+    left: -34vw;
+
+    width: 105vw;
+    height: 58vh;
+
+    transform: translateY(-50%);
+
+    object-fit: contain;
+    object-position: center;
+
+    background: #000;
+  }
+
+  .hero-video-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.18) 48%,
+        rgba(0, 0, 0, 0.75) 100%
+      );
+  }
+}
