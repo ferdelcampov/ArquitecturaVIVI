@@ -25,25 +25,25 @@
   <body>
     <!-- Hero con video -->
     <header class="hero hero-video">
-      <video
-        class="hero-video-bg"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true"
-      >
-        <source
-          src="assets/video/portfolio-header.mp4"
-          type="video/mp4"
-        />
-      </video>
+      <div class="hero-video-frame" aria-hidden="true">
+        <video
+          class="hero-video-bg"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >
+          <source
+            src="assets/video/portfolio-header.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
 
       <div class="hero-video-overlay"></div>
 
       <nav class="nav">
-        <a class="brand" href="#">Viviana Gordillo Valle</a>
 
         <div class="nav-links">
           <a href="#projects">Projects</a>
