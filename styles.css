@@ -586,12 +586,12 @@ ul {
 }
 
 /* =====================================================
-   SCROLL-DRIVEN HORIZONTAL PROJECTS
+   LARGE HORIZONTAL PROJECT SHOWCASE
    ===================================================== */
 
 .projects-scroll-section {
   position: relative;
-  height: 430vh;
+  height: 500vh;
   background: var(--bg);
 }
 
@@ -607,23 +607,24 @@ ul {
 
 .projects-inner {
   width: 100%;
-}
-
-.projects-scroll-section .projects-inner {
-  max-width: none;
+  min-width: 0;
 }
 
 .projects-heading {
   max-width: 1240px;
-  margin: 0 auto 1.6rem;
-  padding-left: 5vw;
-  padding-right: 5vw;
+  margin: 0 auto 1.5rem;
+  padding: 0 5vw;
+}
+
+.projects-heading h2 {
+  margin-bottom: 0;
 }
 
 .projects-progress {
-  width: min(90%, 1116px);
+  width: 90%;
+  max-width: 1116px;
   height: 1px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 2rem;
   background: var(--line);
   overflow: hidden;
 }
@@ -638,63 +639,140 @@ ul {
   will-change: transform;
 }
 
+/* Ventana deslizable manualmente */
+
 .projects-horizontal-viewport {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
 }
+
+.projects-horizontal-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+/* Línea de proyectos */
 
 .projects-horizontal-track {
   display: flex;
-  align-items: flex-start;
-  gap: 2.4rem;
+  align-items: stretch;
+  gap: 5vw;
   width: max-content;
   padding: 0 5vw;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
 }
 
+/* Cada proyecto ocupa casi toda la pantalla */
+
 .projects-horizontal-track .project-card {
-  flex: 0 0 min(43vw, 570px);
-  width: min(43vw, 570px);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(280px, 0.75fr);
+  align-items: stretch;
+  flex: 0 0 90vw;
+  width: 90vw;
+  max-width: 1450px;
+  min-height: min(62vh, 720px);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  background: var(--surface);
+  overflow: hidden;
 }
+
+/* Etiqueta de categoría */
 
 .projects-horizontal-track .project-card::before {
   content: attr(data-category);
+  position: absolute;
+  top: 1.4rem;
+  left: 1.4rem;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding: 0.45rem 0.7rem;
 }
 
+/* Imagen grande */
+
 .projects-horizontal-track .project-image {
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  height: 100%;
+  min-height: min(62vh, 720px);
+  aspect-ratio: auto;
+  background: var(--sunken);
+  overflow: hidden;
 }
+
+.projects-horizontal-track .project-image img {
+  width: 100%;
+  height: 100%;
+  min-height: min(62vh, 720px);
+  object-fit: contain;
+  padding: 2rem;
+  transition: transform 0.7s ease;
+}
+
+.projects-horizontal-track .project-card:hover .project-image img {
+  transform: scale(1.025);
+}
+
+/* Información a la derecha */
 
 .projects-horizontal-track .project-info {
   position: relative;
-  padding-right: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: clamp(2rem, 4vw, 5rem);
+  border-top: none;
+  border-left: 1px solid var(--line);
+}
+
+.projects-horizontal-track .project-info h3 {
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  line-height: 1;
+  margin: 0 0 1.6rem;
+  font-weight: 400;
+}
+
+.projects-horizontal-track .project-info > p:not(.project-number) {
+  display: block;
+  max-width: 34ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.8;
+  overflow: visible;
+  -webkit-line-clamp: unset;
 }
 
 .projects-horizontal-track .project-number {
-  position: absolute;
-  top: 1rem;
-  right: 0;
-  margin: 0;
+  position: static;
+  order: -1;
+  margin: 0 0 1.5rem;
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--accent);
+  letter-spacing: 0.08em;
 }
 
-.projects-horizontal-track .project-card {
-  transition: opacity 0.4s ease;
-}
-
-.projects-horizontal-track .project-card:hover {
-  opacity: 0.88;
-}
+/* Indicador inferior */
 
 .projects-scroll-hint {
   max-width: 1240px;
-  margin: 1.8rem auto 0;
+  margin: 1.5rem auto 0;
   padding: 0 5vw;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
@@ -702,96 +780,140 @@ ul {
 .projects-scroll-hint span {
   display: inline-block;
   margin-left: 0.5rem;
-  transition: transform 0.25s ease;
 }
 
 .projects-scroll-section.is-active .projects-scroll-hint span {
-  animation: horizontalHint 1.2s ease-in-out infinite alternate;
+  animation: projectArrow 1.2s ease-in-out infinite alternate;
 }
 
-@keyframes horizontalHint {
+@keyframes projectArrow {
   from {
     transform: translateX(0);
   }
 
   to {
-    transform: translateX(8px);
+    transform: translateX(10px);
   }
 }
 
-@media (max-width: 900px) {
-  .projects-scroll-section {
-    height: 390vh;
-  }
+/* Tablet */
 
-  .projects-horizontal-track {
-    gap: 1.6rem;
+@media (max-width: 1000px) {
+  .projects-scroll-section {
+    height: 470vh;
   }
 
   .projects-horizontal-track .project-card {
-    flex-basis: 68vw;
-    width: 68vw;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    min-height: 58vh;
+  }
+
+  .projects-horizontal-track .project-image,
+  .projects-horizontal-track .project-image img {
+    min-height: 58vh;
+  }
+
+  .projects-horizontal-track .project-info {
+    padding: 2.2rem;
   }
 }
 
+/* Teléfono */
+
 @media (max-width: 760px) {
   .projects-scroll-section {
-    height: 440vh;
+    height: 500vh;
   }
 
   .projects-sticky {
-    min-height: 560px;
+    min-height: 600px;
+    align-items: center;
   }
 
   .projects-heading {
-    padding-left: 6vw;
-    padding-right: 6vw;
-    margin-bottom: 1.2rem;
+    padding: 0 6vw;
+    margin-bottom: 1rem;
   }
 
   .projects-progress {
     width: 88%;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.4rem;
   }
 
   .projects-horizontal-track {
-    gap: 1.2rem;
-    padding-left: 6vw;
-    padding-right: 6vw;
+    gap: 5vw;
+    padding: 0 6vw;
   }
 
   .projects-horizontal-track .project-card {
-    flex-basis: 82vw;
-    width: 82vw;
-  }
-
-  .projects-scroll-hint {
-    padding-left: 6vw;
-    padding-right: 6vw;
-    margin-top: 1.3rem;
-  }
-}
-
-@media (max-height: 700px) and (min-width: 761px) {
-  .projects-sticky {
-    align-items: flex-start;
-    padding-top: 2rem;
-  }
-
-  .projects-horizontal-track .project-card {
-    flex-basis: min(36vw, 470px);
-    width: min(36vw, 470px);
+    display: flex;
+    flex-direction: column;
+    flex-basis: 88vw;
+    width: 88vw;
+    min-height: auto;
   }
 
   .projects-horizontal-track .project-image {
-    aspect-ratio: 16 / 10;
+    min-height: 42vh;
+    height: 42vh;
+  }
+
+  .projects-horizontal-track .project-image img {
+    min-height: 42vh;
+    height: 42vh;
+    padding: 1rem;
+  }
+
+  .projects-horizontal-track .project-info {
+    min-height: 210px;
+    justify-content: flex-start;
+    padding: 1.7rem;
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .projects-horizontal-track .project-info h3 {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+    margin-bottom: 0.9rem;
+  }
+
+  .projects-horizontal-track .project-info > p:not(.project-number) {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .projects-horizontal-track .project-number {
+    margin-bottom: 0.8rem;
+  }
+
+  .projects-scroll-hint {
+    margin-top: 1rem;
+    padding: 0 6vw;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 761px) {
+  .projects-horizontal-track .project-card {
+    min-height: 55vh;
+  }
+
+  .projects-horizontal-track .project-image,
+  .projects-horizontal-track .project-image img {
+    min-height: 55vh;
+  }
+
+  .projects-heading {
+    margin-bottom: 1rem;
+  }
+
+  .projects-progress {
+    margin-bottom: 1.2rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .projects-horizontal-track,
-  .projects-progress-bar {
-    transition: none;
+  .projects-horizontal-viewport {
+    scroll-behavior: auto;
   }
 
   .projects-scroll-hint span {
