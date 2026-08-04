@@ -129,3 +129,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateInterface();
 });
+
+const heroVideo = document.querySelector(".hero-video-bg");
+
+if (heroVideo) {
+  heroVideo.muted = true;
+
+  const playHeroVideo = () => {
+    const playPromise = heroVideo.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // El navegador puede bloquear temporalmente la reproducción.
+      });
+    }
+  };
+
+  heroVideo.addEventListener("loadeddata", playHeroVideo);
+  heroVideo.addEventListener("canplay", playHeroVideo);
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      playHeroVideo();
+    }
+  });
+
+  playHeroVideo();
+}
