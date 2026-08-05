@@ -181,10 +181,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return String(number).padStart(2, "0");
   };
 
+  const heroGallery = document.querySelector(".hero-gallery");
+
   const showHeroSlide = (index) => {
     heroSlides.forEach((slide, slideIndex) => {
       slide.classList.toggle("active", slideIndex === index);
     });
+
+    const activeSlide = heroSlides[index];
+
+    if (heroGallery && activeSlide) {
+      heroGallery.classList.toggle(
+        "hero-gallery-on-beige",
+        activeSlide.classList.contains("hero-gallery-slide-beige")
+      );
+    }
 
     if (currentCounter) {
       currentCounter.textContent = formatHeroNumber(index + 1);
