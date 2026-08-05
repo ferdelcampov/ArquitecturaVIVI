@@ -1673,28 +1673,35 @@ ul {
   }
 }
 
-/* Fondo beige únicamente para las dos primeras imágenes del hero */
+/* =====================================================
+   HERO — MARCO BEIGE SOLO DETRÁS DE LAS PRIMERAS IMÁGENES
+   ===================================================== */
 
+/* El slide completo conserva el fondo negro */
 .hero-gallery-slide-beige {
-  background: var(--bg);
+  background: #000;
 }
 
+/* La imagen funciona como un rectángulo beige */
 .hero-gallery-slide-beige img {
-  background: var(--bg);
+  width: 82%;
+  height: 70%;
+  padding: clamp(1.7rem, 3.2vw, 3.4rem);
+  background: #e9dfce;
+}
+
   padding: clamp(1.5rem, 3vw, 3rem);
+
+  background: #e9dfce;
+  object-fit: contain;
+  object-position: center;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
-/* Texto y contador legibles sobre el beige */
-
+/* Nombre del proyecto otra vez en blanco porque está sobre negro */
 .hero-gallery-slide-beige .hero-gallery-project-name {
-  color: var(--ink);
-}
-
-/* Contador negro cuando la imagen activa tenga fondo beige */
-.hero-gallery.hero-gallery-on-beige .hero-gallery-counter {
-  color: rgba(28, 26, 23, 0.55);
-}
-
-.hero-gallery.hero-gallery-on-beige .hero-gallery-current {
-  color: var(--ink);
+  color: rgba(255, 255, 255, 0.78);
 }
