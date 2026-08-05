@@ -1705,3 +1705,115 @@ ul {
 .hero-gallery-slide-beige .hero-gallery-project-name {
   color: rgba(255, 255, 255, 0.78);
 }
+
+/* =====================================================
+   REVISTA — MAGAZINE PAGE VIEWER
+   ===================================================== */
+
+.magazine-viewer {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.magazine-stage {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.magazine-page-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--sunken);
+  border: 1px solid var(--line);
+  box-shadow: 0 25px 60px rgba(19, 19, 19, 0.12);
+}
+
+.magazine-page-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.magazine-arrow {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.magazine-arrow:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.magazine-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.magazine-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.6rem;
+}
+
+.magazine-counter {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.magazine-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  max-width: 100%;
+}
+
+.magazine-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.magazine-thumb:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.magazine-thumb.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .magazine-stage {
+    gap: 0.6rem;
+  }
+
+  .magazine-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+}
