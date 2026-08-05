@@ -70,6 +70,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
@@ -87,6 +88,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
+
   font-size: 0.84rem;
   letter-spacing: 0.02em;
 }
@@ -135,15 +137,15 @@ ul {
 
 .hero-exhibition {
   position: relative;
+
   width: 100%;
   min-height: 100vh;
   padding: 0;
+
   overflow: hidden;
   color: #ffffff;
   background: #000000;
 }
-
-/* Navegación superior */
 
 .hero-nav {
   position: absolute;
@@ -160,38 +162,36 @@ ul {
   color: #ffffff;
 }
 
-/* Distribución de dos columnas */
-
 .hero-split {
   display: grid;
   grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+  gap: 0;
 
   width: 100%;
   min-height: 100vh;
 
-  gap: 0;
   background: #000000;
 }
 
 /* =====================================================
-   GALERÍA IZQUIERDA
+   HERO GALLERY
    ===================================================== */
 
 .hero-gallery {
   position: relative;
+
   width: 100%;
   min-width: 0;
   height: 100vh;
   min-height: 650px;
 
   overflow: hidden;
+
   background: #000000;
   border: none;
   outline: none;
   box-shadow: none;
 }
-
-/* Cada imagen de la exposición */
 
 .hero-gallery-slide {
   position: absolute;
@@ -207,8 +207,8 @@ ul {
     clamp(4rem, 7vh, 6rem);
 
   overflow: hidden;
-  background: #000000;
 
+  background: #000000;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -220,12 +220,11 @@ ul {
 
 .hero-gallery-slide.active {
   z-index: 2;
+
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
-
-/* Imagen con efecto de exposición */
 
 .hero-gallery-slide img {
   display: block;
@@ -252,8 +251,6 @@ ul {
   transform: scale(1.025);
 }
 
-/* Nombre del proyecto dentro de la exposición */
-
 .hero-gallery-project-name {
   position: absolute;
   left: clamp(1.8rem, 4vw, 4rem);
@@ -270,8 +267,6 @@ ul {
   letter-spacing: 0.17em;
   text-transform: uppercase;
 }
-
-/* Contador */
 
 .hero-gallery-counter {
   position: absolute;
@@ -293,7 +288,7 @@ ul {
 }
 
 /* =====================================================
-   PANEL DERECHO DEL HERO
+   HERO TEXT PANEL
    ===================================================== */
 
 .hero-text-panel {
@@ -317,8 +312,6 @@ ul {
   box-shadow: none;
 }
 
-/* Contenedor del texto */
-
 .hero-text-panel .hero-content {
   display: flex;
   flex-direction: column;
@@ -332,8 +325,6 @@ ul {
   text-align: right;
 }
 
-/* Architecture Portfolio */
-
 .hero-kicker {
   margin: 0 0 clamp(1.6rem, 3vh, 2.6rem);
 
@@ -345,8 +336,6 @@ ul {
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-
-/* Designing identity */
 
 .hero-exhibition h1 {
   width: 100%;
@@ -361,13 +350,8 @@ ul {
   text-align: right;
 }
 
-/* Nombre de Viviana */
-
 .hero-name {
-  margin:
-    clamp(2.8rem, 5vh, 4.8rem)
-    0
-    0;
+  margin: clamp(2.8rem, 5vh, 4.8rem) 0 0;
 
   color: rgba(255, 255, 255, 0.96);
   font-family: var(--font-display);
@@ -378,8 +362,6 @@ ul {
 
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
 }
-
-/* Botón */
 
 .hero-text-panel .btn {
   margin-top: clamp(1.7rem, 3vh, 2.5rem);
@@ -430,15 +412,12 @@ ul {
     var(--hero-image, none);
 }
 
-/*
-  La clase hero-exhibition no debe heredar la imagen de fondo
-  de los encabezados de páginas internas.
-*/
-
 .hero.hero-exhibition {
   min-height: 100vh;
   padding: 0;
+
   display: block;
+
   background: #000000;
   background-image: none;
 }
@@ -467,6 +446,7 @@ ul {
 .hero h1,
 .section-heading h2 {
   margin: 0 0 1.2rem;
+
   font-weight: 400;
   line-height: 1.06;
 }
@@ -478,6 +458,7 @@ ul {
 
 .hero:not(.hero-exhibition) p {
   max-width: 48ch;
+
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.02rem;
 }
@@ -610,9 +591,9 @@ ul {
 
 .project-image img {
   display: block;
+
   width: 100%;
   height: 100%;
-
   padding: 1.2rem;
 
   object-fit: contain;
@@ -627,17 +608,20 @@ ul {
 .project-info {
   margin-top: 1.1rem;
   padding: 1rem 0 0;
+
   border-top: 1px solid var(--line);
 }
 
 .project-info h3 {
   margin: 0 0 0.4rem;
+
   font-size: 1.2rem;
   font-weight: 400;
 }
 
 .project-info p {
   display: -webkit-box;
+
   margin: 0;
   overflow: hidden;
 
@@ -738,8 +722,6 @@ ul {
   cursor: default;
 }
 
-/* Zona deslizable */
-
 .projects-carousel-viewport {
   width: 100%;
   padding: 0 5vw;
@@ -769,8 +751,6 @@ ul {
   padding-right: 5vw;
 }
 
-/* Cada diapositiva */
-
 .projects-carousel-track .project-card {
   display: grid;
   grid-template-columns:
@@ -793,8 +773,6 @@ ul {
   display: none;
 }
 
-/* Imagen grande */
-
 .projects-carousel-track .project-image {
   width: 100%;
   height: 72vh;
@@ -811,7 +789,6 @@ ul {
   width: 100%;
   height: 100%;
   min-height: 0;
-
   padding: clamp(1rem, 2vw, 2rem);
 
   object-fit: contain;
@@ -823,8 +800,6 @@ ul {
 .projects-carousel-track .project-card:hover .project-image img {
   transform: scale(1.02);
 }
-
-/* Información derecha */
 
 .projects-carousel-track .project-info {
   display: flex;
@@ -887,6 +862,190 @@ ul {
 }
 
 /* =====================================================
+   PROJECT DETAIL CAROUSELS
+   Fish Market and other internal project pages
+   ===================================================== */
+
+.detail-carousel-section {
+  overflow: hidden;
+}
+
+.detail-carousel {
+  width: 100%;
+}
+
+.detail-carousel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  margin: -1rem 0 2rem;
+}
+
+.detail-carousel-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  margin: 0;
+
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.detail-carousel-counter span:first-child {
+  color: var(--accent);
+  font-size: 1.25rem;
+}
+
+.detail-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.detail-carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--ink);
+
+  font: inherit;
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.detail-carousel-btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.detail-carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/*
+  El viewport representa exactamente el ancho visible.
+  No tiene padding horizontal, para evitar espacio vacío
+  antes de la primera imagen.
+*/
+
+.detail-carousel-viewport {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+}
+
+.detail-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+  Cada columna ocupa exactamente el ancho del viewport.
+  Así la siguiente imagen comienza inmediatamente después
+  de la anterior.
+*/
+
+.detail-carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  align-items: stretch;
+
+  width: 100%;
+  gap: 2rem;
+}
+
+/* Cada diapositiva */
+
+.detail-carousel-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: min(76vh, 760px);
+  min-height: 560px;
+  margin: 0;
+
+  overflow: hidden;
+
+  background: var(--sunken);
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.detail-carousel-slide img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  padding: clamp(1rem, 2.5vw, 2.5rem);
+
+  object-fit: contain;
+  object-position: center;
+
+  background: transparent;
+}
+
+/* Diapositivas de diagramas */
+
+.detail-diagram-slide {
+  position: relative;
+  padding: 4.5rem 1.5rem 1.5rem;
+}
+
+.detail-diagram-slide img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.detail-diagram-slide figcaption {
+  position: absolute;
+  top: 1.3rem;
+  left: 1.5rem;
+  z-index: 2;
+
+  margin: 0;
+
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* =====================================================
    VALUES
    ===================================================== */
 
@@ -908,6 +1067,7 @@ ul {
 
 .value-grid h3 {
   margin: 0 0 0.5rem;
+
   font-size: 1rem;
   font-weight: 500;
 }
@@ -994,6 +1154,7 @@ ul {
 .section > p:not([class]) {
   max-width: 68ch;
   margin-bottom: 2.5rem;
+
   color: var(--muted);
 }
 
@@ -1009,6 +1170,7 @@ ul {
 
 .drawing-card {
   padding: 2.6rem 0;
+
   border-top: 1px solid var(--line);
 }
 
@@ -1019,6 +1181,7 @@ ul {
 
 .drawing-card h3 {
   margin: 0 0 0.3rem;
+
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -1092,7 +1255,7 @@ ul {
 }
 
 /* =====================================================
-   RESPONSIVE — DESKTOP MEDIUM
+   RESPONSIVE — MEDIUM DESKTOP
    ===================================================== */
 
 @media (max-width: 1200px) {
@@ -1125,10 +1288,7 @@ ul {
   }
 
   .hero-gallery-slide {
-    padding:
-      5rem
-      1.5rem
-      4rem;
+    padding: 5rem 1.5rem 4rem;
   }
 
   .hero-gallery-slide img {
@@ -1137,10 +1297,7 @@ ul {
   }
 
   .hero-text-panel {
-    padding:
-      7rem
-      4vw
-      4rem;
+    padding: 7rem 4vw 4rem;
   }
 
   .hero-exhibition h1 {
@@ -1176,6 +1333,7 @@ ul {
 
   .value-grid > div {
     padding: 1.5rem 0;
+
     border-right: none;
     border-bottom: 1px solid var(--line);
   }
@@ -1232,7 +1390,7 @@ ul {
     gap: 1.1rem;
   }
 
-  /* Hero apilado */
+  /* Homepage hero */
 
   .hero-exhibition {
     min-height: auto;
@@ -1254,10 +1412,7 @@ ul {
   }
 
   .hero-gallery-slide {
-    padding:
-      4.8rem
-      1rem
-      3.5rem;
+    padding: 4.8rem 1rem 3.5rem;
   }
 
   .hero-gallery-slide img {
@@ -1295,6 +1450,7 @@ ul {
 
   .hero-kicker {
     margin-bottom: 1.3rem;
+
     font-size: 0.78rem;
     letter-spacing: 0.16em;
   }
@@ -1340,7 +1496,7 @@ ul {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Carrusel */
+  /* Homepage projects carousel */
 
   .projects-carousel-section > .section-heading,
   .projects-carousel-header {
@@ -1411,6 +1567,49 @@ ul {
   .projects-carousel-track .project-number {
     margin-bottom: 0.8rem;
   }
+
+  /* Project detail carousels */
+
+  .detail-carousel-header {
+    margin-top: -0.5rem;
+  }
+
+  .detail-carousel-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .detail-carousel-track {
+    grid-auto-columns: 100%;
+    gap: 1.2rem;
+  }
+
+  .detail-carousel-slide {
+    width: 100%;
+    height: 58vh;
+    min-height: 390px;
+  }
+
+  .detail-carousel-slide img {
+    width: 100%;
+    height: 100%;
+    padding: 0.8rem;
+  }
+
+  .detail-diagram-slide {
+    padding: 3.8rem 0.8rem 0.8rem;
+  }
+
+  .detail-diagram-slide img {
+    padding: 0;
+  }
+
+  .detail-diagram-slide figcaption {
+    top: 1rem;
+    left: 1rem;
+
+    font-size: 1rem;
+  }
 }
 
 /* =====================================================
@@ -1448,6 +1647,11 @@ ul {
     height: 620px;
     min-height: 620px;
   }
+
+  .detail-carousel-slide {
+    height: 620px;
+    min-height: 520px;
+  }
 }
 
 /* =====================================================
@@ -1462,197 +1666,9 @@ ul {
   .hero-gallery-slide,
   .hero-gallery-slide img,
   .project-image img,
-  .projects-carousel-viewport {
+  .projects-carousel-viewport,
+  .detail-carousel-viewport {
     transition: none;
     scroll-behavior: auto;
-  }
-}
-
-/* =====================================================
-   PROJECT DETAIL CAROUSELS
-   ===================================================== */
-
-.detail-carousel-section {
-  overflow: hidden;
-}
-
-.detail-carousel {
-  width: 100%;
-}
-
-.detail-carousel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin: -1rem 0 2rem;
-}
-
-.detail-carousel-counter {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin: 0;
-
-  color: var(--muted);
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-}
-
-.detail-carousel-counter span:first-child {
-  color: var(--accent);
-  font-size: 1.25rem;
-}
-
-.detail-carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.detail-carousel-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 48px;
-  height: 48px;
-
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
-
-  background: transparent;
-  color: var(--ink);
-
-  font: inherit;
-  font-size: 1.2rem;
-
-  cursor: pointer;
-
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease,
-    opacity 0.25s ease;
-}
-
-.detail-carousel-btn:hover:not(:disabled) {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
-}
-
-.detail-carousel-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.detail-carousel-viewport {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  overscroll-behavior-x: contain;
-  touch-action: pan-x;
-}
-
-.detail-carousel-viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.detail-carousel-track {
-  display: flex;
-  align-items: stretch;
-  gap: 2rem;
-  width: max-content;
-}
-
-.detail-carousel-slide {
-  flex: 0 0 100%;
-  width: min(90vw, 1240px);
-  height: min(76vh, 760px);
-  min-height: 560px;
-  margin: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-  background: var(--sunken);
-
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-.detail-carousel-slide img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  padding: clamp(1rem, 2.5vw, 2.5rem);
-
-  object-fit: contain;
-  object-position: center;
-
-  background: transparent;
-}
-.detail-diagram-slide {
-  position: relative;
-  padding: 4.5rem 1.5rem 1.5rem;
-}
-
-.detail-diagram-slide img {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-
-  object-fit: contain;
-  object-position: center;
-}
-
-.detail-diagram-slide figcaption {
-  position: absolute;
-  top: 1.3rem;
-  left: 1.5rem;
-  z-index: 2;
-
-  margin: 0;
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-@media (max-width: 760px) {
-  .detail-carousel-slide {
-    flex: 0 0 88vw;
-    width: 88vw;
-    height: 58vh;
-    min-height: 390px;
-  }
-
-  .detail-carousel-slide img {
-    width: 100%;
-    height: 100%;
-    padding: 0.8rem;
-  }
-
-  .detail-diagram-slide {
-    padding: 3.8rem 0.8rem 0.8rem;
-  }
-
-  .detail-diagram-slide img {
-    padding: 0;
-  }
-
-  .detail-diagram-slide figcaption {
-    top: 1rem;
-    left: 1rem;
-    font-size: 1rem;
   }
 }
