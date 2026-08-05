@@ -1672,3 +1672,20 @@ ul {
     scroll-behavior: auto;
   }
 }
+
+/* Fondo beige únicamente para las dos primeras imágenes del hero */
+
+.hero-gallery-slide-beige {
+  background: var(--bg);
+}
+
+.hero-gallery-slide-beige img {
+  background: var(--bg);
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+/* Texto y contador legibles sobre el beige */
+
+.hero-gallery-slide-beige .hero-gallery-project-name {
+  color: var(--ink);
+}
