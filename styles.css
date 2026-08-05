@@ -1689,3 +1689,12 @@ ul {
 .hero-gallery-slide-beige .hero-gallery-project-name {
   color: var(--ink);
 }
+
+/* Contador negro cuando la imagen activa tenga fondo beige */
+.hero-gallery.hero-gallery-on-beige .hero-gallery-counter {
+  color: rgba(28, 26, 23, 0.55);
+}
+
+.hero-gallery.hero-gallery-on-beige .hero-gallery-current {
+  color: var(--ink);
+}
