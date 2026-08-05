@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,32 +19,16 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="styles.css?v=5" />
+    <link rel="stylesheet" href="styles.css?v=6" />
   </head>
 
   <body>
-    <!-- Hero con video -->
-    <header class="hero hero-video">
-      <div class="hero-video-frame" aria-hidden="true">
-        <video
-          class="hero-video-bg"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-        >
-          <source
-            src="assets/video/portfolio-header.mp4"
-            type="video/mp4"
-          />
-        </video>
-      </div>
+    <!-- =====================================================
+         HERO / PROJECT EXHIBITION
+         ===================================================== -->
 
-      <div class="hero-video-overlay"></div>
-
-      <nav class="nav">
-
+    <header class="hero hero-exhibition">
+      <nav class="nav hero-nav">
         <div class="nav-links">
           <a href="#projects">Projects</a>
           <a href="#about">About</a>
@@ -52,19 +36,142 @@
         </div>
       </nav>
 
-      <div class="hero-content">
-        <p class="hero-kicker">Architecture Portfolio</p>
+      <div class="hero-split">
+        <!-- Galería automática del lado izquierdo -->
+        <div
+          class="hero-gallery"
+          aria-label="Selected architecture projects"
+        >
+          <!-- Slide 1 -->
+          <a
+            class="hero-gallery-slide active"
+            href="courtyard-house.html"
+            aria-label="View Courtyard House"
+          >
+            <img
+              src="assets/courtyard-house/ELEVATION.png"
+              alt="Courtyard House elevation"
+            />
 
-        <h1>Designing identity.</h1>
+            <span class="hero-gallery-project-name">
+              Courtyard House
+            </span>
+          </a>
 
-        <p class="hero-name">Viviana Gordillo Valle</p>
+          <!-- Slide 2 -->
+          <a
+            class="hero-gallery-slide"
+            href="mid-rise.html"
+            aria-label="View Mid-rise Apartment Building"
+          >
+            <img
+              src="assets/mid-rise/FRONT%20ELEVATION.png"
+              alt="Mid-rise Apartment Building front elevation"
+            />
 
-        <a class="btn" href="#projects">Explore projects</a>
+            <span class="hero-gallery-project-name">
+              Mid-rise Apartment Building
+            </span>
+          </a>
+
+          <!-- Slide 3 -->
+          <a
+            class="hero-gallery-slide"
+            href="fish-market.html"
+            aria-label="View Fish Market"
+          >
+            <img
+              src="assets/fish-market/diagram1_page-0001.jpg"
+              alt="Fish Market architectural concept"
+            />
+
+            <span class="hero-gallery-project-name">
+              Fish Market
+            </span>
+          </a>
+
+          <!-- Slide 4 -->
+          <a
+            class="hero-gallery-slide"
+            href="Stoa-of-Attalos.html"
+            aria-label="View Stoa of Attalos"
+          >
+            <img
+              src="assets/Stoa-of-Attalos/Foto%20Dibujo%20Stoa%20of%20Attalos.pdf.png"
+              alt="Stoa of Attalos architectural drawing"
+            />
+
+            <span class="hero-gallery-project-name">
+              Stoa of Attalos
+            </span>
+          </a>
+
+          <!-- Slide 5 -->
+          <a
+            class="hero-gallery-slide"
+            href="Meditation-Space.html"
+            aria-label="View Meditation Space"
+          >
+            <img
+              src="assets/Meditation-Space/meditation%20collage%201.pdf.png"
+              alt="Meditation Space architectural collage"
+            />
+
+            <span class="hero-gallery-project-name">
+              Meditation Space
+            </span>
+          </a>
+
+          <!-- Slide 6 -->
+          <a
+            class="hero-gallery-slide"
+            href="Spanish-Custom-House.html"
+            aria-label="View Spanish Custom House"
+          >
+            <img
+              src="assets/Spanish-Custom-House/ARC%20203%20VIVIANA%20GORDILLO%20FINAL-1.png"
+              alt="Spanish Custom House architectural drawings"
+            />
+
+            <span class="hero-gallery-project-name">
+              Spanish Custom House
+            </span>
+          </a>
+
+          <!-- Contador de la galería -->
+          <div class="hero-gallery-counter" aria-hidden="true">
+            <span class="hero-gallery-current">01</span>
+            <span>/</span>
+            <span class="hero-gallery-total">06</span>
+          </div>
+        </div>
+
+        <!-- Contenido del lado derecho -->
+        <div class="hero-text-panel">
+          <div class="hero-content">
+            <p class="hero-kicker">
+              Architecture Portfolio
+            </p>
+
+            <h1>Designing identity.</h1>
+
+            <p class="hero-name">
+              Viviana Gordillo Valle
+            </p>
+
+            <a class="btn" href="#projects">
+              Explore projects
+            </a>
+          </div>
+        </div>
       </div>
     </header>
 
     <main>
-      <!-- About -->
+      <!-- =====================================================
+           ABOUT
+           ===================================================== -->
+
       <section class="section intro" id="about">
         <div class="section-heading">
           <p class="eyebrow">About</p>
@@ -94,7 +201,10 @@
         </div>
       </section>
 
-      <!-- Featured projects carousel -->
+      <!-- =====================================================
+           FEATURED PROJECTS CAROUSEL
+           ===================================================== -->
+
       <section
         class="section projects projects-carousel-section"
         id="projects"
@@ -294,7 +404,10 @@
         </div>
       </section>
 
-      <!-- Approach -->
+      <!-- =====================================================
+           APPROACH
+           ===================================================== -->
+
       <section class="section values">
         <div class="section-heading">
           <p class="eyebrow">Approach</p>
@@ -326,7 +439,10 @@
       </section>
     </main>
 
-    <!-- Contact -->
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
+
     <section class="section contact" id="contact">
       <div class="section-heading">
         <p class="eyebrow">Contact</p>
