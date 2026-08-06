@@ -2009,3 +2009,301 @@ ul {
   transform: rotate(180deg);
   transform-origin: center;
 }
+
+/* =====================================================
+   MOBILE — ORDEN, CENTRADO Y SCROLL DE CARRUSELES
+   ===================================================== */
+
+@media (max-width: 760px) {
+  /* -----------------------------------------------------
+     HERO: primero el texto y después las imágenes
+     ----------------------------------------------------- */
+
+  .hero-exhibition {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .hero-split {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: auto;
+  }
+
+  /* El título aparece primero */
+  .hero-text-panel {
+    order: 1;
+
+    width: 100%;
+    min-height: auto;
+
+    padding:
+      7rem
+      6vw
+      3rem;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    background: #000;
+  }
+
+  .hero-text-panel .hero-content {
+    width: 100%;
+    max-width: none;
+
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-kicker {
+    margin: 0 0 1.2rem;
+
+    font-size: 0.72rem;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-exhibition h1 {
+    width: 100%;
+    max-width: 10ch;
+    margin: 0;
+
+    font-size: clamp(3.2rem, 15vw, 5rem);
+    line-height: 0.9;
+    text-align: left;
+  }
+
+  .hero-name {
+    margin-top: 1.8rem;
+
+    font-size: clamp(1.45rem, 6.5vw, 2.1rem);
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .hero-text-panel .btn {
+    margin-top: 1.5rem;
+    margin-left: 0;
+  }
+
+  /* El carrusel del encabezado aparece después */
+  .hero-gallery {
+    order: 2;
+
+    width: 100%;
+    height: 58svh;
+    min-height: 430px;
+
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero-gallery-slide {
+    padding:
+      2.2rem
+      6vw
+      4.2rem;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-gallery-slide img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
+    padding: 0;
+
+    object-fit: contain;
+    object-position: center;
+
+    transform: scale(1);
+  }
+
+  .hero-gallery-slide.active img {
+    transform: scale(1);
+  }
+
+  /* Conserva correctamente la rotación de Stoa */
+  .hero-gallery-slide img.stoa-rotated,
+  .hero-gallery-slide.active img.stoa-rotated {
+    transform: rotate(180deg);
+  }
+
+  .hero-gallery-project-name {
+    left: 6vw;
+    right: auto;
+    bottom: 1.35rem;
+
+    max-width: 62%;
+
+    font-size: 0.6rem;
+    line-height: 1.35;
+  }
+
+  .hero-gallery-counter {
+    right: 6vw;
+    bottom: 1.35rem;
+  }
+
+  /* -----------------------------------------------------
+     CARRUSEL DE PROYECTOS
+     ----------------------------------------------------- */
+
+  .projects-carousel-section {
+    overflow: visible;
+  }
+
+  .projects-carousel-section > .section-heading,
+  .projects-carousel-header {
+    width: 88vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*
+    Permite el desplazamiento vertical de la página.
+    El valor pan-x anterior bloqueaba el gesto hacia abajo.
+  */
+  .projects-carousel-viewport {
+    width: 100%;
+
+    padding-left: 6vw;
+    padding-right: 6vw;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    scroll-padding-left: 6vw;
+    scroll-padding-right: 6vw;
+    scroll-snap-type: x mandatory;
+
+    touch-action: auto;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .projects-carousel-track {
+    display: flex;
+    align-items: stretch;
+
+    gap: 5vw;
+    padding-right: 6vw;
+  }
+
+  .projects-carousel-track .project-card {
+    display: flex;
+    flex-direction: column;
+
+    flex: 0 0 88vw;
+    width: 88vw;
+    max-width: 88vw;
+    min-height: auto;
+
+    overflow: hidden;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  /*
+    Área de imagen centrada.
+    El contain evita que se recorten imágenes verticales
+    u horizontales.
+  */
+  .projects-carousel-track .project-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 50svh;
+    min-height: 360px;
+    max-height: 520px;
+
+    padding: 1rem;
+
+    overflow: hidden;
+    background: var(--sunken);
+  }
+
+  .projects-carousel-track .project-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
+    padding: 0;
+
+    object-fit: contain;
+    object-position: center;
+
+    transform: none;
+  }
+
+  .projects-carousel-track
+    .project-card:hover
+    .project-image
+    img {
+    transform: none;
+  }
+
+  /* Rotación de Stoa dentro del carrusel de proyectos */
+  .projects-carousel-track
+    .project-image
+    img.stoa-rotated,
+  .projects-carousel-track
+    .project-card:hover
+    .project-image
+    img.stoa-rotated {
+    transform: rotate(180deg);
+  }
+
+  .projects-carousel-track .project-info {
+    width: 100%;
+    min-height: 235px;
+
+    padding: 1.7rem 1.5rem 2rem;
+
+    justify-content: flex-start;
+
+    border-top: 1px solid var(--line);
+    border-left: none;
+  }
+
+  .projects-carousel-track .project-info h3 {
+    margin-bottom: 1rem;
+
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1;
+  }
+
+  .projects-carousel-track
+    .project-info
+    > p:not(.project-number) {
+    max-width: 100%;
+
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .projects-carousel-track .project-number {
+    margin-bottom: 0.8rem;
+  }
+
+  /* Botones ligeramente más compactos */
+  .carousel-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
