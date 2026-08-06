@@ -1680,34 +1680,6 @@ ul {
   }
 }
 
-/* =====================================================
-   HERO — MARCO BEIGE SOLO DETRÁS DE LAS PRIMERAS IMÁGENES
-   ===================================================== */
-
-/* El slide completo conserva el fondo negro */
-.hero-gallery-slide-beige {
-  background: #000;
-}
-
-/* La imagen funciona como un rectángulo beige */
-.hero-gallery-slide-beige img {
-  width: 82%;
-  height: 70%;
-  padding: clamp(1.7rem, 3.2vw, 3.4rem);
-  background: #e9dfce;
-}
-
-  padding: clamp(1.5rem, 3vw, 3rem);
-
-  background: #e9dfce;
-  object-fit: contain;
-  object-position: center;
-
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
-
 /* Nombre del proyecto otra vez en blanco porque está sobre negro */
 .hero-gallery-slide-beige .hero-gallery-project-name {
   color: rgba(255, 255, 255, 0.78);
@@ -1951,3 +1923,26 @@ ul {
   }
 }
 
+/* =====================================================
+   STOA OF ATTALOS — ROTATE 180°
+   ===================================================== */
+
+.hero-gallery-slide img.stoa-rotated {
+  transform: rotate(180deg) scale(0.985);
+}
+
+.hero-gallery-slide.active img.stoa-rotated {
+  transform: rotate(180deg) scale(1.025);
+}
+
+.project-image img.stoa-rotated {
+  transform: rotate(180deg);
+}
+
+.project-card:hover .project-image img.stoa-rotated {
+  transform: rotate(180deg) scale(1.035);
+}
+
+.projects-carousel-track .project-card:hover .project-image img.stoa-rotated {
+  transform: rotate(180deg) scale(1.02);
+}
