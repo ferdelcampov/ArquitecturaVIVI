@@ -1680,10 +1680,6 @@ ul {
   }
 }
 
-/* Nombre del proyecto otra vez en blanco porque está sobre negro */
-.hero-gallery-slide-beige .hero-gallery-project-name {
-  color: rgba(255, 255, 255, 0.78);
-}
 
 /* =====================================================
    REVISTA — MAGAZINE PAGE VIEWER
