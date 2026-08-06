@@ -1942,3 +1942,70 @@ ul {
 .projects-carousel-track .project-card:hover .project-image img.stoa-rotated {
   transform: rotate(180deg) scale(1.02);
 }
+
+/* =====================================================
+   STOA OF ATTALOS — DETAIL PAGE ROTATION
+   ===================================================== */
+
+/*
+  Quitamos el fondo original del hero porque una imagen
+  aplicada como background-image no se puede rotar directamente.
+*/
+
+.hero.stoa-detail-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  background-color: var(--ink);
+  background-image: none;
+}
+
+/* Imagen del encabezado rotada 180 grados */
+
+.hero.stoa-detail-hero::before {
+  content: "";
+
+  position: absolute;
+  inset: -8%;
+  z-index: -2;
+
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform: rotate(180deg) scale(1.05);
+}
+
+/* Capa oscura encima de la imagen */
+
+.hero.stoa-detail-hero::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 17, 14, 0.72) 0%,
+      rgba(20, 17, 14, 0.86) 100%
+    );
+}
+
+/* Mantiene el menú y el contenido por encima del fondo */
+
+.hero.stoa-detail-hero .nav,
+.hero.stoa-detail-hero .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Primera imagen de Project documentation */
+
+.drawing-card img.stoa-documentation-rotated {
+  transform: rotate(180deg);
+  transform-origin: center;
+}
